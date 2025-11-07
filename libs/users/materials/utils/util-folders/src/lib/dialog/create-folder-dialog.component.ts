@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormField, MatInput } from '@angular/material/input';
 
 import { CreateFolder } from '@users/ui-folders';
@@ -17,7 +17,7 @@ export class CreateFolderDialogComponent {
     MatDialogRef<CreateFolderDialogComponent, CreateFolder>,
   );
   private readonly fb = inject(FormBuilder);
-  readonly data: CreateFolder = inject(MAT_DIALOG_DATA);
+
   readonly newFolderForm = this.fb.nonNullable.group({
     title: ['', Validators.required],
   });

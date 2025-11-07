@@ -12,6 +12,6 @@ export class OpenCreateFolderDialogService {
   private readonly dialog = inject(MatDialog);
 
   open(): MatDialogRef<CreateFolderDialogComponent, CreateFolder> {
-    return this.dialog.open<CreateFolderDialogComponent, CreateFolder, CreateFolder>(CreateFolderDialogComponent);
+    return this.dialog.open<CreateFolderDialogComponent, void, CreateFolder>(CreateFolderDialogComponent);
   }
 }

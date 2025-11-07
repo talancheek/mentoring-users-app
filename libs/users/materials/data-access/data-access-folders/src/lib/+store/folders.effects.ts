@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
 
 import { ApiService } from '@core/data-access-api';
 import { CreateFolder, Folder } from '@users/ui-folders';
@@ -29,7 +29,7 @@ export const deleteFolderEffect = createEffect(
 
     return actions$.pipe(
       ofType(FoldersActions.deleteFolder),
-      switchMap(({ id }) =>
+      mergeMap(({ id }) =>
         apiService.delete<Folder>(`/folder/${id}`).pipe(
           map(() => {
             return id;
@@ -50,7 +50,7 @@ export const createFolderEffect = createEffect(
 
     return actions$.pipe(
       ofType(FoldersActions.createFolder),
-      switchMap((title) => apiService.post<Folder, CreateFolder>('/folder', title.title)),
+      mergeMap((title) => apiService.post<Folder, CreateFolder>('/folder', title.title)),
       map((createdFolder) => FoldersActions.createFolderSuccess({ createdFolder })),
       catchError(() => of(FoldersActions.createFolderFailure())),
     );

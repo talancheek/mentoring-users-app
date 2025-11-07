@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, filter, map, of, switchMap, withLatestFrom } from 'rxjs';
+import { catchError, filter, map, mergeMap, of, switchMap, withLatestFrom } from 'rxjs';
 
 import { ApiService } from '@core/data-access-api';
 import { selectRouteParam } from '@shared/util-store';
@@ -31,7 +31,7 @@ export const deleteMaterialEffect = createEffect(
 
     return actions$.pipe(
       ofType(MaterialsActions.deleteMaterial),
-      switchMap(({ id }) =>
+      mergeMap(({ id }) =>
         apiService.delete<Material>(`/material/${id}`).pipe(
           map(() => {
             return id;
@@ -55,7 +55,7 @@ export const createMaterialEffect = createEffect(
       ofType(MaterialsActions.createMaterial),
       withLatestFrom(store.select(selectRouteParam('id'))),
       filter(([, id]) => Boolean(Number(id))),
-      switchMap(([{ createMaterial }, folderId]) => {
+      mergeMap(([{ createMaterial }, folderId]) => {
         return apiService.post<Material, CreateMaterial & Pick<Material, 'folder_id'>>('/material', {
           ...createMaterial,
           folder_id: Number(folderId),
