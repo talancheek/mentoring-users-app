@@ -85,21 +85,9 @@ export const addUser = createEffect(
 export const editUser = createEffect(
   () =>
     inject(Actions).pipe(
-      ofType(UsersActions.editUser),
+      ofType(UsersActions.editUser, UsersActions.setUserStoryPoints),
       map(({ user, onSuccessCb }) => UsersActions.updateUser({ user, onSuccessCb })),
     ),
-  { functional: true },
-);
-
-export const storyPointsUpdate = createEffect(
-  () => {
-    const actions$ = inject(Actions);
-
-    return actions$.pipe(
-      ofType(UsersActions.setUserStoryPoints),
-      map(({ user, onSuccessCb }) => UsersActions.updateUser({ user, onSuccessCb })),
-    );
-  },
   { functional: true },
 );
 
