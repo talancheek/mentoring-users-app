@@ -82,7 +82,7 @@ export class UserDetailsComponent {
       .subscribe();
   }
 
-  onSetUserStoryPoints(user: UpdateUser, onSuccessCb: Callback) {
+  onUserStoryPointsSet(user: UpdateUser, onSuccessCb: Callback) {
     this.usersFacade.setUserStoryPoints(user, onSuccessCb);
   }
 }
