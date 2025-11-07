@@ -172,7 +172,7 @@ export class UserDetailsCardComponent {
     this.disableStoryPointsControl();
   }
 
-  onSetUserStoryPoints(): void {
+  onUserStoryPointsSet(): void {
     const points = this.storyPointsControl.getRawValue();
     this.userStoryPoints.emit({
       user: { ...this.vm.user!, totalStoryPoints: points },
