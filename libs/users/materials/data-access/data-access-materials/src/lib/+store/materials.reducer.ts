@@ -21,37 +21,37 @@ export const materialsFeature = createFeature({
   reducer: createReducer(
     initialMaterialsState,
     on(MaterialsActions.loadMaterials, (state: MaterialsState) => {
-      return {
+      ({
         ...state,
         status: 'loading',
-      };
+      })
     }),
     on(MaterialsActions.loadMaterialsSuccess, (state, { materials }) => {
-      return {
+      ({
         ...state,
         status: 'loaded',
         materials,
-      };
+      })
     }),
     on(MaterialsActions.loadMaterialsFailure, (state) => {
-      return {
+      ({
         ...state,
         status: 'failed',
-      };
+      })
     }),
-    on(MaterialsActions.deleteMaterialSuccess, (state, { deletedMaterialId }) => {
-      return {
+    on(MaterialsActions.deleteMaterialSuccess, (state, { id }) => {
+      ({
         ...state,
         status: 'loaded',
-        materials: state.materials.filter(({ id }) => id !== deletedMaterialId),
-      };
+        materials: state.materials.filter(({ id }) => id !== id),
+      })
     }),
-    on(MaterialsActions.createMaterialSuccess, (state, { newMaterial }) => {
-      return {
+    on(MaterialsActions.createMaterialSuccess, (state, { material }) => {
+      ({
         ...state,
         status: 'loaded',
-        materials: [...state.materials, newMaterial],
-      };
+        materials: [...state.materials, material],
+      })
     }),
   ),
 });
