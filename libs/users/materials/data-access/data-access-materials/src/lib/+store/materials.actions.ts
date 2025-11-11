@@ -9,7 +9,7 @@ export const MaterialsActions = createActionGroup({
     loadMaterialsSuccess: props<{ materials: Material[] }>(),
     loadMaterialsFailure: emptyProps(),
     deleteMaterial: props<{ id: Material['id'] }>(),
-    deleteMaterialSuccess: props<{ deletedMaterialId: Material['id'] }>(),
+    deleteMaterialSuccess: props<{ id: Material['id'] }>(),
     deleteMaterialFailure: emptyProps(),
     createMaterial: props<{ material: CreateMaterialDTO }>(),
     createMaterialSuccess: props<{ material: Material }>(),
