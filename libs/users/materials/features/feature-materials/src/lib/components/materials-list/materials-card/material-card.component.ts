@@ -32,8 +32,11 @@ import { MaterialIconPipe } from './material-icon.pipe';
 })
 export class MaterialCardComponent {
   @Input() material!: Material;
+  
   @ViewChild('materialCard', { static: true, read: ElementRef }) hoverTarget!: ElementRef;
+  
   @Output() deleteMaterialBtnClick = new EventEmitter<void>();
+  
   onDeleteButtonClick() {
     this.deleteMaterialBtnClick.emit();
   }
