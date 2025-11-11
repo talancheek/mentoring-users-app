@@ -7,9 +7,10 @@ import { Material } from '@users/ui-materials';
 })
 export class MaterialIconPipe implements PipeTransform {
   transform(link: Material['material_link']) {
-    if (!link) return 'question_mark';
 
-    const linkType = link.toLowerCase().split('.').pop()?.split(/[$#?]/)[0];
+    const linkType = link 
+      ? new URL(link).pathname.split('.').pop()?.toLowerCase() || '' 
+      : '';
 
     switch (linkType) {
       case 'mp3':
