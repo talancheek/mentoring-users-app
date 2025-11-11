@@ -16,6 +16,6 @@ export const selectFoldersLoadingStatus = createSelector(
 );
 
 export const selectFolderTitle = createSelector(selectFolders, selectRouteParam('id'), (folders, id) => {
-  const foundedFolder = Number(id) ? folders.find((folder) => folder.id === Number(id)) : undefined;
-  return foundedFolder ? foundedFolder.title : 'loading folder';
+  const folder = Number(id) ? folders.find((folder) => folder.id === Number(id)) || null : null;
+  return folder ? folder.title : '';
 });
