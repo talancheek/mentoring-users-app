@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>
+<h1 mat-dialog-title>
   Добавить
   <ng-container [ngSwitch]="materialType">
     <ng-container *ngSwitchCase="materialTypes.VIDEO">
@@ -11,7 +11,7 @@
       PDF
     </ng-container>
   </ng-container>
-</h2>
+</h1>
 
 <form [formGroup]="newMaterialForm" class="create-dialog__container" mat-dialog-content>
     <mat-form-field>
@@ -43,7 +43,7 @@
     </mat-form-field>
 </form>
 
-<div class="dialog-buttons">
+<mat-dialog-actions class="dialog-buttons">
   <button
     mat-button
     type="button"
@@ -59,4 +59,4 @@
   >
     Сохранить
   </button>
-</div>
+</mat-dialog-actions>
