@@ -5,7 +5,7 @@ import { ValidationErrors } from '@angular/forms';
   name: 'urlValidator',
   pure: false,
 })
-export class UrlValidatorPipe implements PipeTransform {
+export class LinkErrorTextPipe implements PipeTransform {
   transform(errors: ValidationErrors) {
     const error = Object.keys(errors)[0];
     switch (error) {
